@@ -23,6 +23,8 @@ while($licznik>=0)
 	echo $licznik."<br>";
 	$licznik=$licznik-2;
 }
+
+
 $a=rand(1,20);
 $b=rand(1,20);
 $c=rand(1,20);
@@ -43,5 +45,33 @@ while($b>0){
 	// echo "liczba b to: " . $b."<br>";	
 }
 echo "wynik to ". $wynik. "<br>";
+
+$a=rand(1,5);
+echo $a. "<br>";
+$b=1;
+while ($a!=0){
+$b=$a*$b;
+$a--;
+}
+echo "wynik ".$b;
+
+$tab=array();
+$tab=1;
+for($i=0;$i<10;$i++){
+    $tab=rand(1,2000000000000);
+    echo "$tab <br>";
+}
+
+$tab=array();
+$sum=0;
+for($i=0;$i<10;$i++){
+    $tab[$i]=rand(1,10);
+    echo $tab[$i]. "<br>";
+}
+var_dump($tab);
+foreach($tab as $key=>$value){
+    $sum+=$value;
+}
+echo "suma to: $sum";
 
 ?>
