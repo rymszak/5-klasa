@@ -11,6 +11,8 @@ KONSOLA /SQL
 SELECT @CHARACTER_SET_DATABASE-POKAZUJE KODOWANIE
 SELECT @COLLATION_DATABASE;- KONKRETNE KODOWANIE OTWARTEJ BAZY DANYCH
 
+describe liga
+
 BY POŁĄCZYĆ PRZECINEK
 SELECT @CHARACTER_SET_DATABASE-POKAZUJE KODOWANIE, @COLLATION_DATABASE;- KONKRETNE KODOWANIE OTWARTEJ BAZY DANYCH
 
@@ -37,12 +39,39 @@ PRIMARY KEY (PERSONID)
 
 slq
 CREATE DATABASE rezerwacje DEFAULT CHARACTER set utf8 DEFAULT COLLATE utf8mb4_polish_ci;
-CREATE TABLE pasazer (
+   CREATE TABLE pasazer (
     id int not null AUTO_INCREMENT PRIMARY KEY,
     imie varchar(45) not null,
     nazwisko varchar(45) not null,
     pesel varchar(45) not null,
     telefon varchar(45) not null,
     mail varchar(45) not null,
-    adres_id int 
+    adres_id int,
+    FOREIGN key(adres_id)  REFERENCES adres(id)
     );
+
+CREATE TABLE rezerwacje (
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    numer_siedzenia int not null,
+    bagaz varchar(45) not null,
+    pasazer_id int not null,
+    telefon varchar(45) not null,
+    mail varchar(45) not null,
+    adres_id int,
+    FOREIGN key(adres_id)  REFERENCES adres(id),
+    FOREIGN KEY(lot_numer_lotu) REFERENCES lot(numer_lotu),
+    FOREIGN KEY(`status_rezerwacji`) REFERENCES
+    );
+
+alter table adres add index(id); - didaje indexowanie primary key
+
+insert into przedmiot(nazwa) values("matematyka");
+
+insert into nazwa_tabeli
+
+values (wartość_tabeli,wartość_tabeli,....)
+insert into nazwa_tabeli(nazwa1,nazwa2,nazwa3) values(wartosc1,wartosc2,wartosc3)
+
+insert into uczen(imie,nazwisko,id_klasy) values("Jan","Kowalski",3);
+
+encje 1:1 jednojednoznaczne   jednoznaczne 1:m     wieloznaczne m:n
