@@ -1,1 +1,48 @@
- 
+ KONSOLA
+show connection; -pokazuje połączenie z serwerem
+
+show connection where Default;
+use nazwabazy; -przechodzi do bazy danych
+SQL
+select database (); -pokaż aktualną baze danych
+Show Table Status; - CZYTELNE INFO JAKA BAZA ZAŁOŻONA DŁUGOŚCI RZĘDY ITD
+
+KONSOLA /SQL
+SELECT @CHARACTER_SET_DATABASE-POKAZUJE KODOWANIE
+SELECT @COLLATION_DATABASE;- KONKRETNE KODOWANIE OTWARTEJ BAZY DANYCH
+
+BY POŁĄCZYĆ PRZECINEK
+SELECT @CHARACTER_SET_DATABASE-POKAZUJE KODOWANIE, @COLLATION_DATABASE;- KONKRETNE KODOWANIE OTWARTEJ BAZY DANYCH
+
+SQL
+
+CREATE TABLE Persons(
+PERSONID INT NOT NULL AUTO_INCREMENT,         PERSONID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+LASTNAME varchar(255) NOT NULL,
+FIRSTNAME varchar(255),
+AGE INT,
+PRIMARY KEY (PERSONID)                         BEZ TEGO
+);
+
+MYSQL
+CREATE TABLE Persons(
+PERSONID INT IDENTITY(1,1),        (1,1)-OD 1+1
+LASTNAME varchar(255) NOT NULL,
+FIRSTNAME varchar(255),
+AGE INT,
+PRIMARY KEY (PERSONID)                        
+);
+
+
+
+slq
+CREATE DATABASE rezerwacje DEFAULT CHARACTER set utf8 DEFAULT COLLATE utf8mb4_polish_ci;
+CREATE TABLE pasazer (
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    imie varchar(45) not null,
+    nazwisko varchar(45) not null,
+    pesel varchar(45) not null,
+    telefon varchar(45) not null,
+    mail varchar(45) not null,
+    adres_id int 
+    );
