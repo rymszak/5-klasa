@@ -11,17 +11,17 @@ SELECT klienci.imie,klienci.nazwisko,idzamowienia,ksiazki.tytul FROM klienci JOI
 SELECT klienci.imie,klienci.nazwisko,klienci.miejscowosc FROM klienci natural join zamowienia where zamowienia.idksiazki=5 or zamowienia.idksiazki=7;
 SELECT tytul, imieautora,nazwiskoautora FROM `ksiazki` join zamowienia on zamowienia.idksiazki=zamowienia.idksiazki join klienci on klienci.idklienta=zamowienia.idklienta where klienci.miejscowosc = "Kraków";
 SELECT klienci.imie,klienci.nazwisko,klienci.idklienta,zamowienia.data,zamowienia.status,ksiazki.tytul FROM `klienci` join zamowienia on zamowienia.idklienta=klienci.idklienta join ksiazki on ksiazki.idksiazki= zamowienia.idksiazki;
-
+SELECT imie,nazwisko,idzamowienia,zamowienia.data,zamowienia.status,ksiazki.tytul FROM `zamowienia` join klienci on klienci.idklienta=zamowienia.idklienta join ksiazki on ksiazki.idksiazki=zamowienia.idksiazki where klienci.nazwisko="Rutkowski" or klienci.nazwisko="Brodka"
 SELECT zamowienia.data, zamowienia.idzamowienia,zamowienia.idklienta,ksiazki.tytul,zamowienia.status FROM `zamowienia` join klienci on klienci.idklienta=zamowienia.idzamowienia join ksiazki on ksiazki.idksiazki=zamowienia.idksiazki where klienci.nazwisko="Jankowska" order by data DESC;
 SELECT round(AVG(ksiazki.cena),2) from ksiazki;
 SELECT klienci.imie,klienci.nazwisko, count(zamowienia.idzamowienia) as "ilosc" FROM `klienci` join zamowienia on zamowienia.idklienta=klienci.idklienta group by zamowienia.idklienta;
 SELECT ksiazki.tytul,ksiazki.cena FROM `ksiazki` order by cena limit 1;
-SELECT klienci.imie,klienci.nazwisko, count(zamowienia.idzamowienia) as "ilosc" FROM `klienci` join zamowienia on zamowienia.idklienta=klienci.idklienta where "ilosc"=1 GROUP by zamowienia.idklienta;
-
-
-
+SELECT klienci.imie,klienci.nazwisko FROM `klienci` where klienci.idklienta in (select zamowienia.idklienta from zamowienia group by idklienta having count(zamowienia.idklienta)=1);
+SELECT klienci.imie,klienci.nazwisko FROM `klienci` where klienci.idklienta in (select zamowienia.idklienta from zamowienia group by idklienta having count(zamowienia.idklienta)=2);
+SELECT klienci.imie,klienci.nazwisko FROM `klienci` where klienci.idklienta in (select zamowienia.idklienta from zamowienia group by idklienta having count(zamowienia.idklienta)=0);
+SELECT distinct klienci.imie,klienci.nazwisko,klienci.miejscowosc FROM klienci natural join zamowienia where zamowienia.idksiazki=5 or zamowienia.idksiazki=7;
 update ksiazki set ksiazki.cena =ksiazki.cena*1.15 where ksiazki.tytul like "%PHP%"; update ksiazki set ksiazki.cena= round(cena,2)
-
+update zamowienia set zamowienia.status="wyslano" WHERE zamowienia.data like "%2021%"
 alter table klienci add `e-mail` varchar(255);
 insert into klienci(klienci.imie,klienci.nazwisko,klienci.miejscowosc,klienci.`e-mail`) values ("Janusz", "Korwin-Mikke","Warszawa","Konfederacja@interia.pl"); insert into klienci(klienci.imie,klienci.nazwisko,klienci.miejscowosc,klienci.`e-mail`) values ("Andrzej", "Duda","Warszawa","PIS_TO_KRULESTWO@interia.pl");
 DELETE from klienci where imie = "Andrzej" and nazwisko like "%D%";
