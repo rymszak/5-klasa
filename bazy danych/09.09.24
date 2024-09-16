@@ -30,3 +30,4 @@ DELETE from klienci where imie = "Andrzej" and nazwisko like "%D%";
 
 
 select tytul,cena from ksiazki where ksiazki.cena=(select min(ksiazki.cena) from ksiazki) 
+SELECT klienci.imie,klienci.nazwisko,klienci.idklienta FROM `klienci` where klienci.idklienta not in(SELECT zamowienia.idklienta from zamowienia);
