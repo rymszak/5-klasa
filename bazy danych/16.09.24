@@ -1,1 +1,7 @@
+foreign key(id roliny) refrencesw pochpodzenie(idpochodzenia) on delete set null on update cascade - to gdzie jest usuniete zmieni na null
+foreign key(id roliny) refrencesw pochpodzenie(idpochodzenia) on delete cascade on update cascade - tam gdzzie usuniemy usunie połączone rzeczy
+
+definiowanie kluczy obcych chroni nas przed utratą spójności danych
+
+constraint (pochodzenie) foreign key(id roliny) refrencesw pochpodzenie(idpochodzenia) on delete set null cascade on update cascade - można nazwać ograniczenia żeby sie nie pogubuć
 
