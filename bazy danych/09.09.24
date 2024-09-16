@@ -18,7 +18,7 @@ SELECT klienci.imie,klienci.nazwisko, count(zamowienia.idzamowienia) as "ilosc" 
 SELECT ksiazki.tytul,ksiazki.cena FROM `ksiazki` order by cena limit 1;
 SELECT klienci.imie,klienci.nazwisko FROM `klienci` where klienci.idklienta in (select zamowienia.idklienta from zamowienia group by idklienta having count(zamowienia.idklienta)=1);
 SELECT klienci.imie,klienci.nazwisko FROM `klienci` where klienci.idklienta in (select zamowienia.idklienta from zamowienia group by idklienta having count(zamowienia.idklienta)=2);
-SELECT klienci.imie,klienci.nazwisko FROM `klienci` where klienci.idklienta in (select zamowienia.idklienta from zamowienia group by idklienta having count(zamowienia.idklienta)=0);
+SELECT klienci.imie,klienci.nazwisko FROM `klienci` left join zamowienia on zamowienia.idklienta=klienci.idklienta where zamowienia.idzamowienia is NULL;
 SELECT distinct klienci.imie,klienci.nazwisko,klienci.miejscowosc FROM klienci natural join zamowienia where zamowienia.idksiazki=5 or zamowienia.idksiazki=7;
 update ksiazki set ksiazki.cena =ksiazki.cena*1.15 where ksiazki.tytul like "%PHP%"; update ksiazki set ksiazki.cena= round(cena,2)
 update zamowienia set zamowienia.status="wyslano" WHERE zamowienia.data like "%2021%"
