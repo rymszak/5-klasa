@@ -1,0 +1,59 @@
+body{
+    font-family: Cambria;
+}
+div div{
+    display: flex;
+    flex-direction: row;
+}
+main{
+    background-color: #E1BEE7;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+}
+main section:nth-child(1){
+    height: 400px;
+}
+
+main section:nth-child(2){
+    height: 330px;
+}
+aside{
+    width: 75%;
+    font-size: 170%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+aside section:nth-child(1){
+    background-color: #9c64a6;
+    color: white;
+    height: 150px;
+    letter-spacing: 5px;
+}
+aside:nth-child(2){
+    color: indigo;
+    height: 580px;
+}
+footer{
+    background-color: #9c64a6;
+    color: white;
+    padding:10px;
+}
+h2{
+    text-align: center;
+}
+ul{
+list-style-type: circle;
+}
+img{
+    padding:4px; 
+    margin: 15px;
+}
+img :hover{
+    padding:3px;
+    border:1px solid indigo; 
+}
+section a{
+     padding:25px;
+}
