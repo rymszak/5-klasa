@@ -32,6 +32,24 @@ foreach($tab as $key=>$value)
 }
 echo "<br>liczba $num pojawia się: $numtimes razy<br>";
 
+// konwertacja sys 10 na sys 2
+$tab=array();
+$number=12;
+$pocz=$number;
+while ($number!=0)
+{
+    array_unshift($tab,$number%2);
+    if($number%2==0){
+        $number=$number/2;
+    }
+    else{
+        $number=floor($number/2);
+    }
+}
+    echo "liczba $pocz w sys 2 to ";
+     foreach($tab as $key){
+        echo $key;
+    }
 
 
 
