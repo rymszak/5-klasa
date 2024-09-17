@@ -19,5 +19,16 @@ foreach($tab as $key=>$value){
     echo $value."<br>";
 }
 echo "najmniejsza liczba to: ".$tmp;
+// wyszukanie elementu wpisanego i ile razy
 
+ $numtimes=0;
+ $num=rand(1,10);
+
+foreach($tab as $key=>$value)
+{
+    if($num==$value){
+        $numtimes++;
+    }
+}
+echo "<br>liczba $num pojawia się: $numtimes razy<br>";
 ?>
