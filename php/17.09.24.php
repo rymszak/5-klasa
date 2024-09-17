@@ -59,11 +59,12 @@ echo "<br>średnia to: $avg<br>";
 
 echo "<br>zd2<br>";
 $tab2=array();
-for($i=0;$i<10;$i++){
-    $tab2[$i]=rand(1,100);
-
-echo "<br> $tab2[$i]";}
-for($i=0;$i<10;$i++){
+$num=1;
+for($i=0;$i<=100;$i++){
+    $tab2[$i]=$num;
+    $num++;
+}
+for($i=0;$i<=100;$i++){
    
     if($tab2[$i] %2 == 1 && $tab2[$i] %3 == 0){
     echo "<br>Liczba $tab2[$i] jest zgodna z założeniami<br>";
@@ -81,3 +82,4 @@ else{
     echo "liczby się nie dzielą bez reszty";
 }
 ?>
+
