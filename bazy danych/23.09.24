@@ -8,3 +8,23 @@ SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIl
 SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia join klienci on zamowienia.IDKlienta=klienci.IDKlienta group by klienci.IDKlienta having sum(dane_zamowien.CenaZakupu)>200000;
 select sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) from dane_zamowien group by dane_zamowien.NumerProduktu;
 select round(avg(dane_zamowien.CenaZakupu),2) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia where year(zamowienia.DataZamowienia)=2012 and month(zamowienia.DataZamowienia)=09;
+
+
+
+
+
+
+
+
+
+
+1. Ile produktów jest w każdej z kategorii
+2. Ile produktów dostarcza każdy z dostawców
+3. Ile razy dokonał zamówienia każdy klient
+4. Ile razy dokonał zamówienia każdy klient, uwzględniając tylko tych, którzy zamówienie realizowali mniej niż 30 razy
+5. Ile razy dokonał zamówienia każdy klient w grudniu 2012
+6. Kwota (suma) zamówień poszeczególnych klientów
+7. Kwota (suma) zamówień poszczególnych klientów z września 2012, posortowana wg wartości
+8. Kwota (suma) zamówień poszczególnych klientów, uwzględniając tylko sumę powyżej 200k
+9. Suma sprzedaży wg produktów
+10. Średnia wartość zamówień we wrześniu 2012
