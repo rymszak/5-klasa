@@ -7,8 +7,7 @@ SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIl
 SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia join klienci on zamowienia.IDKlienta=klienci.IDKlienta where zamowienia.DataZamowienia like "2012-09-%" group by klienci.IDKlienta DESC ORDER BY `sum(dane_zamowien.CenaZakupu)` ASC
 SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia join klienci on zamowienia.IDKlienta=klienci.IDKlienta group by klienci.IDKlienta having sum(dane_zamowien.CenaZakupu)>200000;
 select sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) from dane_zamowien group by dane_zamowien.NumerProduktu;
-select round(avg(dane_zamowien.CenaZakupu),2) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia where year(zamowienia.DataZamowienia)=2012 and month(zamowienia.DataZamowienia)=09;
-
+SELECT AVG(cena_cala) FROM ( SELECT SUM(dane_zamowien.CenaZakupu * dane_zamowien.ZamowionaIlosc) AS "cena_cala" FROM zamowienia JOIN dane_zamowien ON dane_zamowien.NumerZamowienia = zamowienia.NumerZamowienia where month(zamowienia.DataZamowienia)=09 and year(zamowienia.DataZamowienia)=2012 GROUP BY zamowienia.NumerZamowienia ) as dziala;
 
 
 
