@@ -1,1 +1,10 @@
-
+SELECT kategorie.OpisKategorii, count(produkty.NumerProduktu) FROM produkty join kategorie on kategorie.IDKategorii=produkty.IDKategorii GROUP by produkty.IDKategorii;
+SELECT count(produkty.NumerProduktu),dostawcy_produktow.IDDostawcy FROM produkty join dostawcy_produktow on dostawcy_produktow.NumerProduktu=produkty.NumerProduktu GROUP by dostawcy_produktow.IDDostawcy;
+SELECT IDklienta, count(zamowienia.NumerZamowienia) FROM zamowienia GROUP by zamowienia.IDKlienta;
+SELECT IDklienta, count(zamowienia.NumerZamowienia) FROM zamowienia GROUP by zamowienia.IDKlienta having count(zamowienia.NumerZamowienia)<30;
+SELECT IDklienta, count(zamowienia.NumerZamowienia) FROM zamowienia where zamowienia.DataZamowienia BETWEEN "2012-12-01" and "2013-01-01" GROUP by zamowienia.IDKlienta;
+SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia join klienci on zamowienia.IDKlienta=klienci.IDKlienta group by klienci.IDKlienta;
+SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia join klienci on zamowienia.IDKlienta=klienci.IDKlienta where zamowienia.DataZamowienia like "2012-09-%" group by klienci.IDKlienta DESC ORDER BY `sum(dane_zamowien.CenaZakupu)` ASC
+SELECT klienci.IDklienta, sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia join klienci on zamowienia.IDKlienta=klienci.IDKlienta group by klienci.IDKlienta having sum(dane_zamowien.CenaZakupu)>200000;
+select sum(dane_zamowien.CenaZakupu*dane_zamowien.ZamowionaIlosc) from dane_zamowien group by dane_zamowien.NumerProduktu;
+select round(avg(dane_zamowien.CenaZakupu),2) FROM dane_zamowien join zamowienia on zamowienia.NumerZamowienia=dane_zamowien.NumerZamowienia where year(zamowienia.DataZamowienia)=2012 and month(zamowienia.DataZamowienia)=09;
