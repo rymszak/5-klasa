@@ -62,5 +62,29 @@ $tablica["nazwisko"]="Kowalski";
 $tablica["adres"]="polna 1";
 echo $tablica["imie"]." ".$tablica["nazwisko"].", ul. ".$tablica["adres"]."n";
 
+ $tab[0]=array("miejscowosc" =>"Warszawa",
+             "zaludnienie"=>2000000);
+
+$tab[1]=array("miejscowosc" =>"Kraków",
+             "zaludnienie"=>1000000);
+
+$tab[2]=array("miejscowosc" =>"Poznań",
+             "zaludnienie"=>450000);
+             
+$tab[3]=array("miejscowosc" =>"Katowice",
+                "zaludnienie"=>600000);
+                
+$tab[4]=array("miejscowosc" =>"Toruń",
+                "zaludnienie"=>700000);
+
+$tab[5]=array("miejscowosc" =>"Białystok",
+             "zaludnienie"=>650000);
+foreach($tab as $elem){
+    if($elem["zaludnienie"]>=600000 && $elem["zaludnienie"]<=700000){
+        echo $elem["miejscowosc"].", <br>";
+    }
+}
+echo "<br>to miejscowości z mieszkańcami >= 600000 ale <= 700000";
+
 
 ?>
