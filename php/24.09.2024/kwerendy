@@ -1,0 +1,3 @@
+SELECT nazwa,cena FROM `towary` limit 1;
+SELECT cena FROM `towary` where nazwa="Ekierka";
+update dostawcy set nazwa="Artykuly szkolne" where id=2;
