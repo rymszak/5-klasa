@@ -86,5 +86,39 @@ foreach($tab as $elem){
 }
 echo "<br>to miejscowości z mieszkańcami >= 600000 ale <= 700000";
 
+$cena=array('jogurt' =>"5,50zł",
+            'banan'=>"3zł",
+            'pączek'=>"9zł",
+        'ser'=>"3,30zł");
+rsort($cena);
+foreach($cena as $key=>$description){
+    echo $key.": ". $description."<br>";
+}
+$cena=array('jogurt','banan','pączek','ser');
+if(in_array('jogurt',$cena,true)){
+    echo "jewst";
+}else 
+{echo "nie ma";}
 
+
+
+nl2br()-automatyczne wstawienie <br> na końcu linii
+
+$tekst=("Litwo! Ojczyzno moja
+Ty jesteś jak zdrowie, 
+Ile trzeba cię cenić,
+Ten tylko się dowie,
+kto cię straił.");
+echo "przed nl2br <br>".$tekst."<br>";
+echo "po nl2br <br>".nl2br($tekst);
+
+wordwrap(co zmienić,"kiedy ciąc(ile znaków)","czym ciąć np <br>",true (zostawia długie ciągi))
+echo "po użyciu wordwrap<br>".wordwrap($tekst,20,"<br>",true);
+
+mb_strtolower($tekst,"utf8");     -    pokaże tekst pomniejszony z polskimi znakami
+stristr - sprawdza czy jest podciąg obojętny z wielkością 
+substr() - sprawdza podciągów
+strcmp("ciag1","ciag2") - porównaie ciągów
+strlen()-długość str
+mb_strlen()
 ?>
