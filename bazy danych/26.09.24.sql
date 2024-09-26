@@ -33,3 +33,14 @@ predykaty - between distinct like and or itd - warunek który jest prawdziwy nie
   select kolumna from tabela where warunek and warynek or warunek
 
   select nazwisko from klienci where nazwisko like "%ek" or nazwisko like "%ak"
+
+
+zadanka
+  SELECT produkt.nazwa FROM produkt WHERE produkt.ilosc between 67 and 68;
+SELECT produkt.nazwa,produkt.kategoria_id FROM produkt WHERE produkt.cena between 100 and 150 and kategoria_id in (1,5,28);
+SELECT DISTINCT produkt.kategoria_id FROM produkt WHERE produkt.nazwa like "%0" and produkt.cena>1900;
+SELECT klient.miejscowosc FROM klient WHERE klient.ulica like "R%";
+SELECT pracownik.nazwisko,pracownik.numer FROM pracownik where pracownik.numer like "6%" and pracownik.numer like "%5";
+SELECT transakcja.data, pracownik_id,klient_id from transakcja where transakcja.pracownik_id in (10,20) and transakcja.klient_id in (10,20) and transakcja.pracownik_id=transakcja.klient_id;;
+SELECT produkt.nazwa,produkt.ilosc from produkt where produkt.ilosc not BETWEEN 2 and 99;
+SELECT transakcja.data from transakcja join klient on klient.id=transakcja.klient_id where klient.miejscowosc like "P%" and klient.ulica like "K%";
