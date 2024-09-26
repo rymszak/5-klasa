@@ -1,0 +1,4 @@
+2.select siec_hoteli.IDSH,siec_hoteli.KodSH,siec_hoteli.NazwaSH,count(hotel.Nr_lokalu) as `ilosc_miejsc` from siec_hoteli join hotel on hotel.IDHotelu=siec_hoteli.IDSH HAVING count(hotel.Nr_lokalu)>500 order by count(hotel.Nr_lokalu) desc limit 5;
+
+4.select * from pracownik natural join przelozony where przelozony.id=100;
+5.
