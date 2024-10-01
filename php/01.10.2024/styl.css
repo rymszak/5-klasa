@@ -1,0 +1,66 @@
+body{
+    font-family: Georgia;
+    color:white;
+
+}
+
+header, footer{
+    background-color: maroon;
+    text-align: center;
+    padding: 2px;
+}
+section{
+background-color: lightsalmon;
+height: 527px;
+
+}
+main{
+    display: flex;
+}
+.left, .right{
+    width: 15%;
+}
+.middle{
+    width: 70%;
+}
+aside{
+    background-color: maroon;
+    height:  70px;
+
+}
+button{
+    background-color: lightsalmon;
+    color: maroon;
+    border:none;
+    font-size: 400%;
+    display: block;
+    margin: auto;
+    padding-top: 210px;
+}
+aside>img{
+    height: 70px;
+    animation-name: mymove;
+    animation-duration: 4s;
+}
+
+@keyframes mymove{
+
+from{padding-left: 50px;}
+to{padding-left: 0px;}
+}
+.middle>img{
+    display: block;
+    margin: auto;
+    padding: 45px;
+
+}
+.middle>img:hover{
+    
+    animation-name:newmove;
+    animation-duration:5s;
+
+}
+@keyframes newmove {
+    from {scale: 100%;}
+    to{scale: 120%;}
+}

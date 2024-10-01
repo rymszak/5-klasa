@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styl.css">
+    <script src="main.js" defer></script>
+    
+</head>
+<body>
+    <div class="container">
+        <header><h1>Zwiedzamy polskę</h1></header>
+        <main>
+            <section class="left"><button id="left">&lt;</button></section>
+            <section class="middle"><img src="img1.jpg"  alt="aktywne zdjęcie" id="dis" value="1"></section>
+            <section class="right"><button id="right">&gt;</button></section>
+        </main>
+        <aside><img src="img2.jpg" alt="Gdańsk" id="zd2"><img src="img3.jpg" id="zd3" alt="Kraków"><img src="img4.jpg" id="zd4" alt="Niedzica"><img src="img5.jpg" id="zd5" alt="Pieniny"><img src="img6.jpg" id="zd6" alt="Szklarska Poręba"><img src="img7.jpg" id="zd7" alt="Tatry"><img src="img1.jpg" id="zd1" alt="Wrocław "></aside>
+        <footer><h3>Autorem galerii jest</h3>
+        <p>22</p>
+    <a href="http://pixabay.com" nodestination>więcej zdjęć</a></footer>
+    </div>
+</body>
+</html>
+<!-- <script defer>
+const lef=document.querySelector("#left")
+const rig=document.querySelector("#right")
+const dis=document.querySelector("#dis")
+// dis=1
+console.log(dis.value)
+lef.addEventListener(`click`, function(){
+    if(dis.value==0)
+    {dis.value=7
+        dis.src=`img${dis.value}.jpg`
+    }else{
+        dis.value=dis.value-1
+    dis.src=`img${dis.value}.jpg`}
+    console.log(dis.value)
+})
+let i
+rig.addEventListener('click', function(){
+    if(dis.value==8){
+     dis.value=i 
+     i=1
+     dis.src=`img${i}.jpg`
+    }else{
+    dis.value=i
+    i++
+    dis.src=`img${i}.jpg`}
+    console.log(i)
+})
+</script> -->
