@@ -59,9 +59,14 @@ WHERE
         samochody
     WHERE
         samochody.marka = "opel" AND samochody.model = "astra" AND samochody.marka != "ford" AND samochody.model != "mondeo"
-)
-GROUP BY
-    klienci.id_klienta;
+) AND dane_wypozyczen.id_samochodu NOT IN(
+    SELECT
+        samochody.id_samochodu
+    FROM
+        samochody
+    WHERE
+        samochody.marka = "ford" AND samochody.model = "mondeo"
+);
 
 
 
