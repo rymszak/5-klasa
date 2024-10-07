@@ -1,0 +1,15 @@
+1.	Wyświetl informacje o samochodach marki opel wraz z dodatkową kolumną zawierającą średnią cenę samochodów tej marki.
+SELECT *,(SELECT round(avg(cena_katalogowa),2) from samochody where marka="opel" GROUP by marka) as `srednia` FROM `samochody` where marka="opel";
+2.	Wyświetl informacje o najtańszych samochodach w bazie.
+SELECT * FROM samochody where cena_katalogowa = (select min(cena_katalogowa) from samochody ) ORDER BY `samochody`.`cena_katalogowa` DESC;
+3.	Wyświetl informacje o samochodach, które nie zostały nigdy wypożyczone.
+SELECT * FROM samochody where samochody.id_samochodu not in (select dane_wypozyczen.id_samochodu from dane_wypozyczen);
+4.	Policz ile razy dokonywano wypożyczenia na więcej niż jedno auto.
+SELECT COUNT(*) FROM ( SELECT dane_wypozyczen.id_wypozyczenia FROM dane_wypozyczen GROUP BY dane_wypozyczen.id_wypozyczenia HAVING COUNT( dane_wypozyczen.id_wypozyczenia ) > 1 ) t1;
+5.	Wyświetl informacje o klientach (imię i nazwisko), którzy dokonali największej liczby wypożyczeń.
+
+6.	Wyświetl informacje o klientach (imię i nazwisko), którzy nigdy nie wypożyczali aut z klasy 'sedan'.
+7.      Wyświetl wszystkie marki i modele samochodów (wraz z id i nr rejestracyjnym) z dopiskiem czy były wypożyczane w okresie od 21 do 31 grudnia 2022.
+8.	Wyświetl informacje o samochodach, których cena wypożyczenia za dobę jest większa lub równa średniej cenie samochodu w danej klasie.
+9.      Wyświetl informacje o samochodach, których cena wypożyczenia za dobę jest największa w danej klasie. 
+10.	Wyświetl imiona i nazwiska klientów (imię i nazwisko), którzy wypożyczali auto Opel Astra, ale nigdy nie wypożyczali Forda Mondeo.
