@@ -58,8 +58,8 @@ WHERE
     FROM
         samochody
     WHERE
-        samochody.marka = "opel" AND samochody.model = "astra" AND samochody.marka != "ford" AND samochody.model != "mondeo"
-) AND dane_wypozyczen.id_samochodu NOT IN(
+        samochody.marka = "opel" AND samochody.model = "astra")
+AND dane_wypozyczen.id_samochodu NOT IN(
     SELECT
         samochody.id_samochodu
     FROM
