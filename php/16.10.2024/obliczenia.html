@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacja paliw</title>
+    <link rel="stylesheet" href="styl2.css">
+</head>
+<body>
+    <header><h1>Całodobowa stacja paliw</h1></header>
+    <div class="all">
+        <div class="dol">
+            <a href="stacja.html"><img src="home.png" width="80" height="80" alt="Strona główna"></a>
+            <a href="obliczenia.html"><img src="znak.png" width="80" height="80" alt="Obliczenia"></a>
+            <a href="kwerendy.txt">pobierz dokumenty</a>
+        </div>
+        <main>
+            <section>
+                <h2>Orientacyjny koszt paliwa</h2>  
+                Rodzaj paliwa (1-benzyna, 2-olej napędowy)
+                <br><input type="number" id="oil"><br>Ile litrów?<br><input type="number" id="ile">
+                <br><button id="btn">Oblicz</button>
+                <p id="display"></p>
+            </section>
+            <aside>
+                <img src="samochod.png" alt="samochód" id="samochod" width="200" height="200">
+            </aside>
+        </main>
+    </div>
+    <footer><p>Stronę opracował 22</p></footer>
+  </body>
+  </html>
+  <script>
+    const ile=document.getElementById("ile")
+    const oil=document.getElementById("oil")
+    const btn=document.getElementById("btn")
+    const display=document.getElementById("display")
+    let num=0
+    btn.addEventListener('click', ()=>
+{
+    if(oil.value==1){
+        num=parseInt(ile.value)*4
+    }
+    else if(oil.value==2){
+        num=parseInt(ile.value)*3.5
+    }
+    else{
+        num=0
+    }
+    display.innerHTML=`koszt paliwa: ${num} zł`
+})
+  </script>
