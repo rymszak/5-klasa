@@ -1,0 +1,67 @@
+encja - tablica odpowiadajaca prawdziwe dane (obiekt który jest do zdefiniowania, nazwa tabeli)
+atrybuty encji - definiuje wszystko o encji
+krotka - pojedyńczy rekord tabeli
+! dane pierwotne  -  nie mogą być wyliczane muszą być wprowadzone np data uro
+! dane pochodne - wyliczane na podstawie danych pierwotnych np wiek(data-uro)
+
+jeśli zmienimy dane pierwotne trzeba ponownie pochodne obliczać
+obszar analizy - zbiór danych dotyczących rzeczywistości np apteka, hurtownia
+! system zarządzania bazą danych - program który zarządza i przetwarza kopiuje modyfikuje bazy danych
+
+schemat szdb
+modół zarządzania pamięcią- przechowuje info o miejscu zapisu danych na dysku i obsłujuje pamięć operacyjną    procesor zapytań- zapytanie na openracje   modół zarządzania transakcjami- kontrola poprawności transakcji
+
+! model danych - połączony zbiór danych które są powiązane
+
+część strukturalna - struktura encje krotki reguły itd
+część manipulacyjna - aktualizacje operacje zmiany reguły integralności itd
+
+
+atomowość baz danych - 
+
+model jednorodny - jeden!!!!!!!!!!!! łatowść odczytywania i lokalizowania ( jedna tabela  np excel )
+zalety: łatwość odczytu i lokalizacji
+wady: duplikaty
+model relacyjny - łączy tabele kluczami
+
+model odwróconego drzewa (hierarchiczny) powiązania z 1 rekordem nadrzędnym
+wada: trzeba stworzyć nadrzędny żeby stworzyć podrzędny
+model sieciowy - próba rozwiązania hierarchicznego nie używany już
+wiele drzew może dzielić gałęzie 
+model obiektowy - opiera się na łączności z programami komputerowymi
+model relacyjny - łączy wiele tabel do wielu
+
+object query language - zintegrowany interface
+postgersQL
+
+! integralność danych - funkcja systemu która gwarantuje integralność i blok usunięcia danych połączoych
+integralność - połączenie danych wedłóg regół i restrykcji mieniania danych (blokowanie błędów w bazach danych by zostały prawdziwe) / mechanizmy obrany przed awariami i zachowanie poprawności danych
+
+zachowanie popawnoci - w określonej tabeli muszą byc dane zgodne z typem w tabeli i nie mogą wystąpić braki danych
+
+integralność semantyczna
+
+ograniczenie integralności - zaożenie ograniczenia
+ograniczenie dynamiczne - ograniczają zmiany
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+
+
+architektura bazy danych
+system zarządzania bazy, relacyjny język programowania i aplikacje(mysql itd) tworzą schemat
+
+
+poziom wewnetrzy - przetrzymywane danych
+zewnętrzny - prawa i administracje
+pojęciowo koncepcyjny - powiązanie i przerzucenie na fizyczny
+
+1 warstwowa architektura - wszystko na 1 komputerze
+2 ... - klient i serwer     aplikacje zainstalowane na pc uzytkownika komunikuje się z bazą serwera klient komunikuje się nie ma wpływu na połączenie i ochrone danych
+3 ... - klient, serwer aplikacji(www.   mysql i apache), baza user komunikuje się przez przeglądarkę 
+
+relacje to zbiór  (iloczyn kartechujski) 
+każdy z zbioru a połączy się z b żeby powstało c
+
+_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+normalizacja 
+
