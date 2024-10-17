@@ -17,8 +17,6 @@ część strukturalna - struktura encje krotki reguły itd
 część manipulacyjna - aktualizacje operacje zmiany reguły integralności itd
 
 
-atomowość baz danych - 
-
 model jednorodny - jeden!!!!!!!!!!!! łatowść odczytywania i lokalizowania ( jedna tabela  np excel )
 zalety: łatwość odczytu i lokalizacji
 wady: duplikaty
@@ -65,3 +63,26 @@ każdy z zbioru a połączy się z b żeby powstało c
 _____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 normalizacja 
 
+normalizacja baz danych - proces eliminacji powtarzających się danych    ( trzymanie danych w jednym miejscu i usunięcie powtórek zapewnia bezpieczeństwo poprawność)
+zmniejsza wydajność bazy danych 
+cel to unikanie anomalii(powtarzanych danych)
+
+sposoby sprawdzenia normalizacji
+przyrównanie nf(normal form)
+
+anomalia modyfikacji - modyfikowanie info w pewnych krotkach a w pewnych nie
+anomalia usuwania - część info usunięcia może usunąć inne potrzebne info
+anomalia wyłączania - wprowadzanie informacji błędbych
+
+postacie normalne
+
+atomowość - wiersz ma info o 1 obiekcie (1 pole na 1 rzecz)np każdy przedmiot osobna komurka
+
+1nf - emcja kiedy wiersz przechowuje info o pojedyńczym obiekcie (atomowe)
+  (łączone tabele np oceny i nauczyciel)
+2nf - przechowóje dane tylko konkretnej klasy obiektu
+  trzeba ustawiac wiele tabel z wieloma rekordami i je połączyć np(przedmiot>oceny<uczeń)
+3nf - żadna kolumna inna niż klucz podst nie zależy od innej kolumny innej niż klucz podstawowy (zależne tylko klucz główny  <=> klucz główny)
+  np stworzyć klucz obcy w klient połączonym z tabela gfdzie jest miasto i kod regionowy
+
+normalizacja - brak powtórzeń, pole zależy od klucza, od całego klucza, i niczego innego, tylko klucza
