@@ -19,6 +19,8 @@ alter table nazwaTabeli convert to character set utf8 collate rodzaj kodowania;
 alter table rzeczy drop primary key id
 alter table rzeczy modify id not null, add primary key(id);
 alter table osoba add column plec after wiek
+alter table osoba add column count smallint(6) not null after nazwisko;
+
 
 
 
