@@ -1,11 +1,13 @@
 <?php
 $imie=$_POST["imie"];
 $szkola=$_POST["szkola"];
-$rola=$_POST["rola"];
-$adult=$_POST["pelnoletni"];
-if($adult==NULL){
+$adult="";
+if(!isset($_POST['pelnoletni'])){
     $adult="niepełnoletni";
 }
+else{
+    $adult=$_POST["pelnoletni"];}
+$rola=$_POST["rola"];
 
 echo "Jesteś ".$imie.",<br>Jesteś ".$rola." w ". $szkola.".<br>Z formularza wynika, że jesteś ".$adult;
 
