@@ -36,17 +36,17 @@ alter table osoba add column count smallint(6) not null after nazwisko;
 
 
 create DATABASE księgarnia;
-CREATE TABLE autor( `id_autora` int AUTO_INCREMENT PRIMARY KEY, `nazwisko` varchar(50) not null, `imie` varchar(50) not null );
-CREATE TABLE wydawnictwo( `id_wydawnictwa` int AUTO_INCREMENT PRIMARY KEY not null, `nazwa` varchar(50) not null );
-CREATE TABLE faktura( `id_faktury` int AUTO_INCREMENT PRIMARY KEY not null, `nr_faktury` varchar(50) not null, `sposob_platnosci` varchar(50) not null, `data_wystawienia` datetime not null );
-CREATE TABLE klient( `id_klienta` INT AUTO_INCREMENT PRIMARY KEY NOT NULL, `imie` VARCHAR(50) NOT NULL, `nazwisko` VARCHAR(50) NOT NULL, `miejscowosc` varchar(50) NOT NULL, `kod_pocztowy` varchar(6) not null, `ulica` varchar(50) not null, `nr_domu` varchar(7) not null, `telefon` varchar(12) not null, `e_mail` varchar(50) not null );
+CREATE TABLE autor( `id_autora` int AUTO_INCREMENT PRIMARY KEY, `nazwisko` varchar(50), `imie` varchar(50));
+CREATE TABLE wydawnictwo( `id_wydawnictwa` int AUTO_INCREMENT PRIMARY KEY not null, `nazwa` varchar(50));
+CREATE TABLE faktura( `id_faktury` int AUTO_INCREMENT PRIMARY KEY not null, `nr_faktury` varchar(50), `sposob_platnosci` varchar(50), `data_wystawienia` datetime);
+CREATE TABLE klient( `id_klienta` INT AUTO_INCREMENT PRIMARY KEY NOT NULL, `imie` VARCHAR(50), `nazwisko` VARCHAR(50), `miejscowosc` varchar(50), `kod_pocztowy` varchar(6), `ulica` varchar(50), `nr_domu` varchar(7), `telefon` varchar(12), `e_mail` varchar(50));
 CREATE TABLE ksiazki(
     `id_ksiazki` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-    `tytul` VARCHAR(100) NOT NULL,
+    `tytul` VARCHAR(100),
     `id_autora` INT,
-    `cena` decimal(6,2) NOT NULL,
+    `cena` decimal(6,2),
     `id_wydawnictwa` INT,
-    `rok_wydania` INT NOT NULL,
+    `rok_wydania` INT,
     FOREIGN KEY(id_autora) REFERENCES autor(id_autora)
     on delete cascade,
     FOREIGN KEY(id_wydawnictwa) REFERENCES wydawnictwo(id_wydawnictwa)
@@ -55,23 +55,23 @@ CREATE TABLE ksiazki(
 CREATE TABLE zamowienia(
     `id_zamowienia` INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     `id_klienta` INT,
-    `data_zamowienia` DATETIME NOT NULL,
-    `data_wyslania` DATETIME NOT NULL,
-    `koszt_wysylki` decimal(6,2) NOT NULL,
+    `data_zamowienia` DATETIME,
+    `data_wyslania` DATETIME,
+    `koszt_wysylki` decimal(6,2),
     `id_faktury` INT,
     FOREIGN KEY(id_faktury) REFERENCES faktura(id_faktury)
     on delete CASCADE,
     FOREIGN KEY(id_klienta) REFERENCES klient(id_klienta)
-    on update cascade
+    on update restrict
 );
 CREATE TABLE `szczegoly zamowienia`(
     `id_zamowienia` INT,
     `id_ksiazki` INT,
-    `ilosc` INT NOT NULL,
+    `ilosc` INT,
     FOREIGN KEY(id_zamowienia) REFERENCES zamowienia(id_zamowienia)
     on UPDATE CASCADE,
     FOREIGN KEY(id_ksiazki) REFERENCES ksiazki(id_ksiazki)
-    on DELETE CASCADE
+    on DELETE set null
 );
 
 
@@ -106,3 +106,27 @@ insert into ksiazki(id_autora,id_wydawnictwa,rok_wydania,cena,tytul) values(4,1,
 insert into ksiazki(id_autora,id_wydawnictwa,rok_wydania,cena,tytul) values(3,4,1812,"35.99","Przygoda z Owcą");
 insert into ksiazki(id_autora,id_wydawnictwa,rok_wydania,cena,tytul) values(3,7,1812,"49.99","Przygoda z Owcą");
 insert into faktura(nr_faktury,sposob_platnosci,data_wystawienia) values("14/FAN502154","przelew","2021-10-10");
+insert into faktura(faktura.nr_faktury,faktura.sposob_platnosci,faktura.data_wystawienia) VALUES("14/FAN502155","gotówka","2021-01-07");
+insert into faktura(faktura.nr_faktury,faktura.sposob_platnosci,faktura.data_wystawienia) VALUES("14/FAN502156","gotówka","2021-01-08");
+insert into faktura(faktura.nr_faktury,faktura.sposob_platnosci,faktura.data_wystawienia) VALUES("14/FAN502157","przelew","2021-01-08");
+insert into faktura(faktura.nr_faktury,faktura.sposob_platnosci,faktura.data_wystawienia) VALUES("14/FAN502143","gotówka","2021-01-10");
+insert into faktura(faktura.nr_faktury,faktura.sposob_platnosci,faktura.data_wystawienia) VALUES("14/FAN502167","gotówka","2022-02-03");
+insert into `szczegoly zamowienia`(id_ksiazki,ilosc) values(2,2);
+insert into `szczegoly zamowienia`(id_ksiazki,ilosc) values(4,1);
+insert into `szczegoly zamowienia`(id_ksiazki,ilosc) values(2,1);
+insert into `szczegoly zamowienia`(id_ksiazki,ilosc) values(2,1);
+insert into `szczegoly zamowienia`(id_ksiazki,ilosc) values(1,1);
+insert into `szczegoly zamowienia`(id_ksiazki,ilosc) values(5,1);
+
+
+insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(2,"10",2);
+insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(2,"10",3);
+insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(1,"17",4);
+insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(1,"17",5);
+insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(3,"20",6);
+insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(3,"20",7);
+
+wyrzuca błąd z powodu blokady kaskady na zamówieniach
+
+alter table klient add plec enum('M','K') after nazwisko;
+gdy wpiszemy coś innego niż M lub K zostanie wypisane ""
