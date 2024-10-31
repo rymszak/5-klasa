@@ -124,9 +124,15 @@ insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia
 insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(1,"17",4);
 insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(1,"17",5);
 insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(3,"20",6);
-insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(3,"20",7);
 
+insert into zamowienia(zamowienia.id_klienta,zamowienia.koszt_wysylki,zamowienia.id_faktury) VALUES(3,"20",7);
 wyrzuca błąd z powodu blokady kaskady na zamówieniach
 
 alter table klient add plec enum('M','K') after nazwisko;
+update klient set plec='M' where id_klienta=3;
+update klient set plec='D' where id_klienta=4;
+
 gdy wpiszemy coś innego niż M lub K zostanie wypisane ""
+
+update zamowienia set zamowienia.koszt_wysylki="12.99" where zamowienia.koszt_wysylki="10.00";
+update `szczegoly zamowienia` set id_zamowienia=1 where `szczegoly zamowienia`.`id_ksiazki`=2;
