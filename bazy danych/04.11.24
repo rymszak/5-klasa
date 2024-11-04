@@ -119,3 +119,96 @@ create user 'maniek4'@'localhost' identified by '';
 grant select,delete,insert on zwierzaki.pieski to 'jozek4';
 grant create,update,select on zwierzaki.swinki to 'bronek4';
 grant all PRIVILEGES on zwierzaki.swinki to 'admin_swinki';
+
+
+
+
+
+
+
+
+union wszystko bez duplikatów 
+intersect część wspólna 
+except oddzielne
+
+SELECT
+    klienci.ImieKlienta,
+    klienci.NazwiskoKlienta,
+    'klient' AS 'kto'
+FROM
+    klienci
+UNION
+SELECT
+    pracownicy.ImiePracownika,
+    pracownicy.NazwiskoPracownika
+FROM
+    pracownicy;
+
+
+________________________________________________
+SELECT
+    klienci.ImieKlienta,
+    klienci.NazwiskoKlienta,
+    klienci.miasto,                        niewykona się bo nie równa ilość kolumn
+    'klient' AS 'kto'
+FROM
+    klienci
+UNION
+SELECT
+    pracownicy.ImiePracownika,
+    pracownicy.NazwiskoPracownika
+FROM
+    pracownicy;
+___________________________________________
+
+SELECT
+    dane_zamowien.NumerZamowienia
+FROM
+    dane_zamowien
+WHERE
+    dane_zamowien.NumerProduktu = 3 OR dane_zamowien.NumerProduktu = 7
+UNION
+SELECT
+    dane_zamowien.NumerZamowienia
+FROM
+    dane_zamowien
+WHERE
+    dane_zamowien.NumerProduktu = 4 OR dane_zamowien.NumerProduktu = 27 OR dane_zamowien.NumerProduktu = 28 OR dane_zamowien.NumerProduktu = 29;
+
+
+CREATE VIEW `dane_odobowe_5i` AS SELECT
+    klienci.ImieKlienta,
+    klienci.NazwiskoKlienta,
+    'klient' AS 'kto'
+FROM
+    klienci
+UNION
+SELECT
+    pracownicy.ImiePracownika,
+    pracownicy.NazwiskoPracownika,
+    'pracownik' AS 'kto'
+FROM
+    pracownicy;
+
+
+SELECT
+    klienci.ImieKlienta,
+    klienci.NazwiskoKlienta,
+    dane_zamowien.NumerZamowienia
+FROM
+    klienci
+JOIN dane_zamowien WHERE dane_zamowien.NumerZamowienia IN(
+    SELECT
+        dane_zamowien.NumerZamowienia
+    FROM
+        dane_zamowien
+    WHERE
+        dane_zamowien.NumerProduktu = 3 OR dane_zamowien.NumerProduktu = 7
+    EXCEPT
+SELECT
+    dane_zamowien.NumerZamowienia
+FROM
+    dane_zamowien
+WHERE
+    dane_zamowien.NumerProduktu = 4 OR dane_zamowien.NumerProduktu = 27 OR dane_zamowien.NumerProduktu = 28 OR dane_zamowien.NumerProduktu = 29
+);
