@@ -1,0 +1,41 @@
+SELECT
+    CONCAT(
+        UPPER(LEFT(imie, 1)),
+        SUBSTRING(imie, 2, 50),
+        ' ',
+        UPPER(LEFT(nazwisko, 1)),
+        SUBSTRING(nazwisko, 2, 50)
+    ) AS `imie i nazwisko`,
+    CONCAT(
+        ' id: ',
+        id, 
+        ' wiek ', 
+        wiek) AS `informacje dodatkowe`
+FROM
+    uczniowie;
+
+
+
+Istnieją 3 grupy uprawnień w bazie danych MySQL/MariaDB:
+
+1. Do zarządzani danymi: select, insert, delete, update.
+2. Do manipulowania strukturą baz oraz tabel, m.in: create, alter, drop, show.
+3. Do administracji serwerem, m.in: grant, create user, reload, super.
+
+Każde z tych uprawnień może być pojedynczo lub zbiorczo przypisywane użytkownikowi. Użytkownik może mieć określona prawa działające na poziomie całego serwera, pojedynczej bazy, pojedynczej tabeli w bazie, czy do widoku utworzonego na podstawie zapytania.
+
+--wyświetlenie zalogowanych użytkowników:
+
+select current_user();
+
+--alternatywnie: 
+
+select user();
+
+--wyświetlenie wszystkich istniejących użytkowników na serwerze:
+
+select user from mysql.user;
+
+--wyświetlenie uprawnień zalogowanego użytkownika:
+
+show GRANTS;
