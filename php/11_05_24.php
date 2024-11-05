@@ -83,6 +83,13 @@ while($wiersze=mysqli_fetch_row($zap)){
     echo "<td>$wiersze[3]</td>";
     echo "</tr>";
 }
+ //   while($tab=mysqli_fetch_array($zap)){
+  //  echo "<ul>";
+   // echo "<li>".$tab['Nazwisko']." ".$tab['Imie']." "."</li>";
+   // echo "</ul>";
+//}
+//mysqli_close($conn);
+//}
   mysqli_close($conn);
 }
 }
@@ -90,4 +97,5 @@ while($wiersze=mysqli_fetch_row($zap)){
  </table>
 </body>
 </html>
+
 
