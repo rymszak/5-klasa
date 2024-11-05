@@ -6,3 +6,27 @@ baza na logowanie i dostęp do operacji w zależności do dostępu
 aplikacja wizualna z intuichjnym menu
 tabele łączenia i logowania
 
+baza 
+  tabele
+    -przychodnie
+    -lekarze  => przychodnie
+    -pacjęci
+    -pracownicy 
+    -konta  => pracownicy lekarze
+    -wizyty  => lekarze pacjeci przychodnie pracownicy
+  konta
+    -pielęgniarki/rejestracja
+    -lekarze
+    -admin
+strona
+  zakładna z logowaniem
+  zakładka formulaż z rejestracją nowych pacjętów
+  zakładka do rejestracji wizyt
+  zakładka do wyszukania ostatniej wizyty i zalecaniami
+php
+  połączenie z serwerem
+  stworzenie sesji
+  ciasteczka
+  możliwość wykonywania zadań ze względu na role
+  konto admin automatycznie ma wypisane wypisuje sprawozdanie z ostatniego mieś
+  
