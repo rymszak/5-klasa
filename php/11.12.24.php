@@ -94,7 +94,7 @@ $query=mysqli_query($conn,'SELECT nazwaPliku, podpis from zdjecia order by podpi
 while($wiersz=mysqli_fetch_array($query)){
     echo "<img src='$wiersz[0]' alt='$wiersz[1]' title='$wiersz[1]'>";
 }
-$query=mysqli_query($conn,'SELECT dataWyjazdu, cel from wycieczki limit 3');
+$query=mysqli_query($conn,'SELECT dataWyjazdu, cel from wycieczki');
 echo "<ol>";
 while($wiersz=mysqli_fetch_array($query)){
     echo "<li> Dnia $wiersz[0] pojechaliśmy do $wiersz[1]";
