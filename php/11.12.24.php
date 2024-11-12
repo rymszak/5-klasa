@@ -68,3 +68,38 @@ mysqli_close($conn);
     ?>
 </body>
 </html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+    li{
+        list-style-type: upper-roman;
+    }
+    img{
+        height: 300px;
+        width: 70px;
+    }
+  </style>
+</head>
+<body>
+ <?php
+$conn=mysqli_connect('localhost','root','','podroze');
+$query=mysqli_query($conn,'SELECT nazwaPliku, podpis from zdjecia order by podpis');
+while($wiersz=mysqli_fetch_array($query)){
+    echo "<img src='$wiersz[0]' alt='$wiersz[1]' title='$wiersz[1]'>";
+}
+$query=mysqli_query($conn,'SELECT dataWyjazdu, cel from wycieczki limit 3');
+echo "<ol>";
+while($wiersz=mysqli_fetch_array($query)){
+    echo "<li> Dnia $wiersz[0] pojechaliśmy do $wiersz[1]";
+}
+echo "</ol>";
+?>   
+</body>
+</html>
