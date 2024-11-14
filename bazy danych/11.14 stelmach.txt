@@ -1,0 +1,40 @@
+1. Wyświetl liczbę obserwacji dla każdego gatunku.
+select ID_gatunku, count(ID_obserwacji) from obserwacje GROUP BY (ID_gatunku);
+2. Wyświetl średnią liczebność obserwacji dla każdego gatunku.
+select ID_gatunku, round(AVG(ID_obserwacji),0) from obserwacje GROUP BY (ID_gatunku);
+3. Wyświetl maksymalną liczebność dla każdego gatunku, ale tylko dla gatunków o liczebności większej niż 10.
+SELECT max(liczebnosc) from obserwacje where liczebnosc > 10 group by ID_gatunku;
+4. Wyświetl całkowitą liczebność obserwacji dla każdego gatunku i posortuj wyniki malejąco.
+SELECT sum(liczebnosc) from obserwacje group by ID_gatunku ORDER BY sum(liczebnosc) DESC;
+5. Wyświetl liczbę obserwacji w każdej lokalizacji.
+SELECT lokalizacje.lokalizacja,count(ID_obserwacji) FROM `obserwacje` join lokalizacje on lokalizacje.ID_lokalizacji=obserwacje.ID_lokalizacji group by obserwacje.ID_lokalizacji;
+6. Wyświetl średnią liczebność obserwacji dla każdej lokalizacji.
+SELECT lokalizacje.lokalizacja,round(avg(ID_obserwacji),0) FROM `obserwacje` join lokalizacje on lokalizacje.ID_lokalizacji=obserwacje.ID_lokalizacji group by obserwacje.ID_lokalizacji;
+7. Wyświetl lokalizacje, które miały więcej niż 10 obserwacji.
+SELECT lokalizacje.lokalizacja FROM `obserwacje` join lokalizacje on lokalizacje.ID_lokalizacji=obserwacje.ID_lokalizacji group by obserwacje.ID_lokalizacji having count(ID_obserwacji) > 10;
+8. Wyświetl średnią liczebność obserwacji dla każdego gatunku, posortowaną rosnąco.
+SELECT avg(liczebnosc) FROM `obserwacje` group by obserwacje.ID_gatunku ORDER BY `avg(liczebnosc)` ASC
+9. Wyświetl nazwę lokalizacji i łączną liczebność obserwacji, posortowane malejąco.
+SELECT lokalizacje.lokalizacja, sum(obserwacje.liczebnosc) FROM `obserwacje` join lokalizacje on lokalizacje.ID_lokalizacji=obserwacje.ID_lokalizacji group by obserwacje.ID_lokalizacji order by sum(obserwacje.liczebnosc) DESC;
+10. Wyświetl nazwę gatunku i maksymalną liczebność obserwacji dla każdego gatunku.
+SELECT gatunki.nazwa_zwyczajowa, max(obserwacje.liczebnosc) FROM `obserwacje` join gatunki on gatunki.ID_gatunku=obserwacje.ID_gatunku GROUP by nazwa_zwyczajowa;
+11. Wyświetl gatunki, które miały średnią liczebność większą niż 20.
+SELECT gatunki.nazwa_zwyczajowa FROM `obserwacje` join gatunki on gatunki.ID_gatunku=obserwacje.ID_gatunku GROUP by nazwa_zwyczajowa having avg(obserwacje.liczebnosc) >20;
+12. Wyświetl nazwy lokalizacji i liczbę różnych gatunków obserwowanych w każdej lokalizacji.
+SELECT count(gatunki.nazwa_zwyczajowa),lokalizacje.lokalizacja FROM `obserwacje` join gatunki on gatunki.ID_gatunku=obserwacje.ID_gatunku join lokalizacje on lokalizacje.ID_lokalizacji=obserwacje.ID_lokalizacji GROUP by lokalizacje.lokalizacja
+13. Wyświetl całkowitą liczebność dla każdego zachowania w obserwacjach.
+SELECT sum(obserwacje.liczebnosc), obserwacje.zachowanie from obserwacje group by zachowanie;
+14. Wyświetl nazwę gatunku i całkowitą liczebność jego obserwacji dla gatunków, które mają więcej niż 50 obserwacji.
+SELECT sum(obserwacje.liczebnosc),gatunki.nazwa_zwyczajowa from obserwacje join gatunki on gatunki.ID_gatunku=obserwacje.ID_gatunku group by gatunki.ID_gatunku having count(obserwacje.ID_obserwacji)>50;
+15. Wyświetl nazwę lokalizacji i średnią liczebność obserwacji dla lokalizacji, w których średnia liczebność jest większa niż 15.
+SELECT avg(obserwacje.liczebnosc), lokalizacje.lokalizacja from obserwacje JOIN lokalizacje on lokalizacje.ID_lokalizacji = obserwacje.ID_lokalizacji group by lokalizacje.lokalizacja having avg(obserwacje.liczebnosc)>15;
+16. Wyświetl lokalizacje, w których liczba obserwacji była większa niż 100.
+SELECT lokalizacje.lokalizacja from obserwacje JOIN lokalizacje on lokalizacje.ID_lokalizacji = obserwacje.ID_lokalizacji group by lokalizacja HAVING count(obserwacje.ID_obserwacji)>100;
+17. Wyświetl nazwę gatunku, nazwę lokalizacji i całkowitą liczebność obserwacji dla każdego gatunku w każdej lokalizacji.
+SELECT gatunki.nazwa_zwyczajowa, lokalizacje.lokalizacja, sum(obserwacje.liczebnosc) from obserwacje JOIN lokalizacje on lokalizacje.ID_lokalizacji = obserwacje.ID_lokalizacji join gatunki on gatunki.ID_gatunku=obserwacje.ID_gatunku group by lokalizacje.lokalizacja;
+18. Wyświetl maksymalną i minimalną liczebność obserwacji dla każdego gatunku.
+SELECT max(obserwacje.liczebnosc), min(obserwacje.liczebnosc) from obserwacje join gatunki on gatunki.ID_gatunku=obserwacje.ID_gatunku group by gatunki.ID_gatunku;
+19. Wyświetl lokalizacje, w których suma liczebności obserwacji jest większa niż 500.
+SELECT lokalizacje.lokalizacja from obserwacje join lokalizacje on lokalizacje.ID_lokalizacji = obserwacje.ID_lokalizacji group by lokalizacje.lokalizacja having sum(obserwacje.liczebnosc)>500;
+20. Wyświetl średnią liczebność dla każdego zachowania w obserwacjach.
+SELECT avg(obserwacje.liczebnosc), obserwacje.zachowanie from obserwacje group by obserwacje.zachowanie;
