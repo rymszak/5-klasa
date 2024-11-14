@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kalkudrator</title>
+    <script src="main.js" defer></script>
+    <style>
+        .hidden{
+            display: none;
+        }
+        body{
+            text-align: center;
+        }
+        label{
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+        }
+        button{background-color: blue;
+        color:white
+        }
+        p{
+            font-size: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <header><h1>Kalkulator dni do egzaminu</h1></header>
+    <main>
+        <form action="#">
+            <label for="wydarzenie">Wydarzenie: <select name="wydarzenie" id="wydarzenie">
+                <option value="wybierz egzamin">wybierz z listy</option>
+                <option value="2025,1,14">Egzamin INF.03 pisemny</option>
+                <option value="2025,1,17">Egzamin INF.03 praktyczny</option>
+                <option value="2025,5,4">Matura pisemna j.polski</option>
+                <option value="2025,5,5">Matura pisemna matematyka</option>
+                <option value="2025,5,6">Matura pisemna j.obcy</option>
+            </select></label>
+            <label for="dataa" class="hidden">Wybierz datę: <input type="date" name="dataa" id="dataa" ></label>
+            <button id="dzis" value="1">Dni od dziś</button> 
+            <button id="kal">kalendarz</button>
+        </form>
+        <p id="display"></p>
+    </main>
+</body>
+</html>
