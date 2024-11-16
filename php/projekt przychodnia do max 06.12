@@ -7,13 +7,13 @@ aplikacja wizualna z intuichjnym menu
 tabele łączenia i logowania
 
 baza 
-  tabele
-    -przychodnie
-    -lekarze  => przychodnie
-    -pacjęci
-    -pracownicy 
-    -konta  => pracownicy lekarze
-    -wizyty  => lekarze pacjeci przychodnie pracownicy
+  tabele  +
+    -przychodnie    +
+    -lekarze  => przychodnie    +
+    -pacjęci  +
+    -pracownicy  + 
+    -konta  => pracownicy lekarze  +
+    -wizyty  => lekarze pacjeci przychodnie pracownicy   +
   konta
     -pielęgniarki/rejestracja
     -lekarze
@@ -30,3 +30,10 @@ php
   możliwość wykonywania zadań ze względu na role
   konto admin automatycznie ma wypisane wypisuje sprawozdanie z ostatniego mieś
   
+
+userzy
+login                  haslo
+pielegniarka      HasloPielengiarek
+lekarz            HasloLekarz        
+administrator     HasloAdmin         
+pacjenci          HasloAdmin
