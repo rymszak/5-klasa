@@ -18,7 +18,7 @@ if (!$conn) {
         if (!empty($login) && !empty($haslo)) {
             $result = mysqli_query($conn, "SELECT login, haslo, id_lekarza, id_pacjenta, id_pracownika, id_admina FROM `konta` WHERE login='$login';");
 
-            if ($result && mysqli_num_rows($result) > 0) {
+            if ($result || mysqli_num_rows($result) > 0) {
                 $wiersz = mysqli_fetch_assoc($result);
                 if ($haslo == $wiersz['haslo']) {
                     session_start();
