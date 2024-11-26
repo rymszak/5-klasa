@@ -1,0 +1,40 @@
+body{
+    font-family: Tahoma;
+}
+header{
+    background-color: #7da453;
+    color: white;
+    height: 120px;
+}
+.first .second{
+width: 40%;
+}
+.third{
+    width: 20%;
+}
+main section{
+    background-color: #aed581;
+    width: 200px;
+    height: 100px;
+    margin: 7px;
+    border:1px solid #7da453;
+}
+img{
+    height: 100px;
+}
+header{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: left;
+}
+main{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+h5{
+    text-align: center;
+}
+main section:hover{
+    background-color: #7da453;
+}
