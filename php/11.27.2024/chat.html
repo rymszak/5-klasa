@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="styl.css">
+</head>
+<body>
+    
+    <header><h2>Chat</h2></header>
+    
+
+<aside><h3>Chaty</h3>
+    <ul><li>Ogólny</li>
+    <li>Tematyczne <ol>
+        <li>Turystyczny</li>
+        <li>Żeglarski</li>
+        <li>Filatelistyczny</li>
+        <li>Hodowla zwierzątek domowych</li>
+    </ol></li></ul>
+<h3>Uczestnicy</h3>
+<p>Jolanta Nowak</p>
+<img src="Jolka.jpg" alt="Jolanta Nowak">
+<p>Krzysztof Łukasiński</p>
+<img src="Krzysiek.jpg" alt="Krzysztof Łukasiński"></aside>
+
+
+ <main>
+       <div class="chat" id="dis"> <section class="jola"><img src="Jolka.jpg"><p>Cześć idziesz jutro do kina?</p></section>
+    <section class="krzych"><img src="Krzysiek.jpg"><p>Tak! A ty?</p></section></div>
+        Wpisz wiadomość: <input type="text" name="tekst" id="tekst"> <button id="btn">Wyślij</button>
+<br><button id="ran">Generuj losową odpowiedź</button></main>
+
+
+   <footer><h5>Chat wykonał: 22</h5></footer>
+
+
+</body>
+</html>
+<script>
+    const btn=document.getElementById('btn')
+    const ran=document.getElementById('ran')
+    const display=document.getElementById('dis')
+    let i=1;
+    btn.addEventListener('click',function (evt){
+        evt.preventDefault()
+        const tekst=document.getElementById('tekst').value
+        if(i%2==1){
+        display.innerHTML+=`<section class="jola"><img src="Jolka.jpg"><p>${tekst}</p></section>`
+        i++}
+        else{
+            display.innerHTML+=`<section class="krzych"><img src="Krzysiek.jpg"><p>${tekst}</p></section>`
+            i++
+        }})
+    ran.addEventListener('click',function (){
+       const tab=["Świetnie!","Kto gra główną rolę?","Lubisz filmy Tego reżysera?","Będę 10 minut wcześniej","Może kupimy sobie popcorn?","Ja wolę Colę","Zaproszę jeszcze Grześka","Tydzień temu też byłem w kinie na Diunie","Ja funduję bilety"]
+    
+txt=Math.floor(Math.random()*9)
+    
+   console.log(txt)
+        
+            display.innerHTML+=`<section class="krzych"><img src="Krzysiek.jpg"><p>${tab[txt]}</p></section>`
+           
+    })
+</script>
