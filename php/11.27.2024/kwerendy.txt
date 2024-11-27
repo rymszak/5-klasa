@@ -1,0 +1,4 @@
+SELECT round(2024-avg(rokUr),0) as 'średni wiek' FROM `uczestnicy`;
+SELECT imie,nazwisko,logowanie.nick,logowanie.haslo FROM `uczestnicy` join logowanie on logowanie_id=logowanie.id where imie like "J%";
+create user "uczestnik" identified by "UCZ123&";
+grant SELECT,UPDATE on uczestnicy.* to uczestnik;
