@@ -3,10 +3,10 @@ body{
 }
 img{
 width: 100%;
-
 }
 nav{
     width: 100%;
+padding-top: 10px;
 }
 
  .left{
@@ -32,12 +32,14 @@ aside{display: flex;
     flex-direction:column;
     text-align:center;
 }
-
+header{
+    position: sticky;
+    top:0;
+}
 button{
     display:flex;
     justify-content:center;
-    justify-self:center;
-    width: 70px;
+    width: fit-content;
     height: 20px;
     text-align:center;
     border-style:none;
@@ -65,4 +67,12 @@ background-color: #E04050;
 footer{
 background-color: #244f4b;
 color:white;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.hid{
+    display:none;
 }

@@ -59,6 +59,43 @@
     </style>
 </head>
 <body>
+<nav class="baner">
+            <button type="submit" id="main">strona główna</button>
+        <button type="submit" id="lekarz">zakładka pracownicy</button>
+<form action="#" method="post">
+        <button name="log" class="log">Wyloguj</button>
+    </form>
+        </nav>
+        <?php
+        if(isset($_POST['log'])){
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+        if (isset($_COOKIE['admin'])) {
+            unset($_COOKIE['admin']); 
+            unset($_COOKIE['logged']);
+            setcookie('admin', '', time() - 3600, '/');
+            setcookie('logged','',time()-3600,'/'); 
+            return true;
+        } else {
+            return false;
+        }
+        exit();
+    }
+    ?>
+        <script>
+const lek=document.getElementById('lekarz')
+lek.addEventListener('click',function (ev){
+        ev.preventDefault();
+        window.location.replace("pracownik.php");
+    })
+ const main=document.getElementById('main');
+ main.addEventListener('click',function (ev){
+        ev.preventDefault();
+        window.location.replace("index.php");
+    })
+    </script>
     <main>
 <form action="#" method="post">
     <h3>Dodaj pacjenta</h3>
