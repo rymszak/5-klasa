@@ -61,9 +61,44 @@
     </style>
 </head>
 <body>
+<nav class="baner">
+            <button type="submit" id="main">strona główna</button>
+        <button type="submit" id="lekarz">nasi lekarze</button>
+
 <form action="#" method="post">
         <button name="log" class="log">Wyloguj</button>
     </form>
+        </nav>
+        <?php
+        if(isset($_POST['log'])){
+        session_start();
+        session_unset();
+        session_destroy();
+        header("Location: index.php");
+        if (isset($_COOKIE['admin'])) {
+            unset($_COOKIE['admin']); 
+            unset($_COOKIE['logged']);
+            setcookie('admin', '', time() - 3600, '/');
+            setcookie('logged','',time()-3600,'/'); 
+            return true;
+        } else {
+            return false;
+        }
+        exit();
+    }
+    ?>
+        <script>
+const lek=document.getElementById('lekarz')
+lek.addEventListener('click',function (ev){
+        ev.preventDefault();
+        window.location.replace("lekarz.php");
+    })
+ const main=document.getElementById('main');
+ main.addEventListener('click',function (ev){
+        ev.preventDefault();
+        window.location.replace("index.php");
+    })
+    </script>
     <?php
     if(isset($_POST['log'])){
         session_start();
@@ -163,10 +198,9 @@ if(isset($_POST['last'])){
     $imie=$_POST['imie'];
     $nazwisko=$_POST['nazwisko'];
     if(!empty($imie)&&!empty($nazwisko)){
-        $wyniki=mysqli_query($conn,"SELECT zalecenia from wizyty where id_pacjenta=(select id_pacjenta from pacjenci where imie='$imie' and nazwisko='$nazwisko') order by id_wizyty desc;");
-        
+        $wyniki=mysqli_query($conn,"SELECT zalecenia from wizyty where id_pacjenta=(select id_pacjenta from pacjenci where imie='$imie' and nazwisko='$nazwisko') order by id_wizyty desc;");   
         $last=mysqli_fetch_array($wyniki);
-        if($last){
+        if(!$last){
             exit;
         }
         for($i=0;$i<1;$i++){
@@ -175,7 +209,6 @@ if(isset($_POST['last'])){
 }
 }
 }
-
 ?>
 </p>
 </aside>

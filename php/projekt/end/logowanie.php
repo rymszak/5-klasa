@@ -64,6 +64,7 @@ if (!$conn) {
                         if($wiersz['id_admina']>0){
                             $cookie_name = "admin";
                             setcookie($cookie_name, time() + (86400 * 30));
+                            setcookie('logged', time() + (86400 * 30));
                             $_SESSION['admin']=true;
                             header("Location: admin.php");
                         }

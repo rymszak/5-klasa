@@ -38,6 +38,7 @@
             width: 30%;
         }
         section form > button{
+            
             width: 80%;
         }
         a{
@@ -70,21 +71,31 @@
         width: 70px;
         text-align:center;
        }
+       #update button{
+        
+        margin-top:20px;
+       }
     </style>
 </head>
-<body>
-    <form action="#" method="post">
+<nav class="baner">
+        <button type="submit" id="main">strona główna</button>
+<form action="#" method="post">
         <button name="log" class="log">Wyloguj</button>
     </form>
+        </nav>
+<body>
+    
     <?php
     if(isset($_POST['log'])){
         session_start();
         session_unset();
         session_destroy();
-        header("Location: index.html");
+        header("Location: index.php");
         if (isset($_COOKIE['admin'])) {
             unset($_COOKIE['admin']); 
-            setcookie('admin', '', time() - 3600, '/'); 
+            unset($_COOKIE['logged']);
+            setcookie('admin', '', time() - 3600, '/');
+            setcookie('logged','',time()-3600,'/'); 
             return true;
         } else {
             return false;
@@ -207,7 +218,7 @@
         <a href='raport.csv' download>pobierz dane</a>
 <br>
 <hr>
-<section>
+<section id="update">
 Update passord:
 <form action="#" method="post">
 <label for="login">Login <input type="text" name="login"></label>
@@ -253,3 +264,10 @@ Update passord:
 </main>
 </body>
 </html>
+<script> 
+ const main=document.getElementById('main');
+ main.addEventListener('click',function (ev){
+        ev.preventDefault();
+        window.location.replace("index.php");
+    })
+    </script>
